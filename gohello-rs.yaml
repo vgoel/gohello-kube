@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: gohello-rs
+  labels:
+    app: gohello-app
+    tier: main
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+       app: gohello-app
+  template:
+    metadata:
+      labels:
+        app: gohello-app
+    spec:
+      containers:
+      - name: gohello-container
+        image: vgoel/gohello:latest

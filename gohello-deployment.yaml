@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: gohello-deployment
+   labels:
+      app: gohello
+      tier: frontend
+spec:
+   replicas: 3
+   selector:
+      matchLabels:
+         app: gohello-app
+   template:
+      metadata:
+         labels:
+            app: gohello-app
+      spec:
+         containers:
+            - name: gohello
+              image: vgoel/gohello
+              ports:
+                 - containerPort: 8080
